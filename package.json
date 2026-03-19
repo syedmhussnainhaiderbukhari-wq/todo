@@ -1,0 +1,1 @@
+{\n  "name": "todo-app",\n  "version": "1.0.0",\n  "main": "index.js",\n  "scripts": {\n    "start": "ts-node src/index.ts",\n    "build": "tsc"\n  },\n  "dependencies": {},\n  "devDependencies": {\n    "typescript": "^4.5.4",\n    "ts-node": "^10.4.0",\n    "@types/node": "^14.14.37"\n  }\n}
