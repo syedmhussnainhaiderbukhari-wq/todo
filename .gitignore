@@ -1,0 +1,12 @@
+# Node modules
+node_modules/
+
+# Build output
+/dist/
+
+# JSON files
+todos.json
+
+# Other build artifacts
+*.log
+*.tmp
