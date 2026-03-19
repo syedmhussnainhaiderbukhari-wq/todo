@@ -5,12 +5,12 @@ const program = new Command();
 
 program
   .version('1.0.0')
-  .description('CLI for Todo App')
+  .description('CLI for Todo App');
 
 program
   .command('add <task>')
   .description('Add a new todo')
-  .action((task) => {
+  .action((task: string) => {
     addTodo(task);
     console.log(`Added todo: ${task}`);
   });
@@ -22,23 +22,23 @@ program
     const todos = listTodos();
     console.log('Todos:');
     todos.forEach((todo, index) => {
-      console.log(`${index + 1}. ${todo.task} - ${todo.completed ? '✔️' : '❌'}`);
+      console.log(`${index + 1}. ${todo.title} - ${todo.completed ? '✔️' : '❌'}`);
     });
   });
 
 program
   .command('complete <index>')
   .description('Mark a todo as completed')
-  .action((index) => {
-    completeTodo(index);
+  .action((index: string) => {
+    completeTodo(Number(index));
     console.log(`Completed todo at index: ${index}`);
   });
 
 program
   .command('delete <index>')
   .description('Delete a todo')
-  .action((index) => {
-    deleteTodo(index);
+  .action((index: string) => {
+    deleteTodo(Number(index));
     console.log(`Deleted todo at index: ${index}`);
   });
 
