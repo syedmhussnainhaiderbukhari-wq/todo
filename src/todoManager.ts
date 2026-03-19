@@ -1,18 +1,26 @@
+export interface Todo {
+    id: number;
+    task: string;
+    completed: boolean;
+}
+
 class TodoManager {
+    private todos: Todo[] = [];
+
     constructor() {
         this.todos = [];
     }
 
-    create(todo) {
+    create(todo: Todo): Todo {
         this.todos.push(todo);
         return todo;
     }
 
-    read(id) {
+    read(id: number): Todo | undefined {
         return this.todos.find(todo => todo.id === id);
     }
 
-    update(id, updatedTodo) {
+    update(id: number, updatedTodo: Partial<Todo>): Todo | null {
         const index = this.todos.findIndex(todo => todo.id === id);
         if (index !== -1) {
             this.todos[index] = { ...this.todos[index], ...updatedTodo };
@@ -21,7 +29,7 @@ class TodoManager {
         return null;
     }
 
-    delete(id) {
+    delete(id: number): Todo[] | null {
         const index = this.todos.findIndex(todo => todo.id === id);
         if (index !== -1) {
             return this.todos.splice(index, 1);
@@ -29,10 +37,12 @@ class TodoManager {
         return null;
     }
 
-    list() {
+    list(): Todo[] {
         return this.todos;
     }
 }
+
+export default TodoManager;
 
 // Example usage:
 // const manager = new TodoManager();

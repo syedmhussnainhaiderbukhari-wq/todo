@@ -1,6 +1,13 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-let todos = [];
+interface Todo {
+  id?: number;
+  title?: string;
+  task?: string;
+  completed?: boolean;
+}
+
+let todos: Todo[] = [];
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === 'GET') {

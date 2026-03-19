@@ -1,11 +1,19 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { todos } from '../../../data/todos';
+
+interface Todo {
+  id: number;
+  title?: string;
+  task?: string;
+  completed?: boolean;
+}
+
+const todos: Todo[] = [];
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const { id } = req.query;
 
   if (req.method === 'PATCH') {
-    const todoToUpdate = todos.find(todo => todo.id === Number(id));
+    const todoToUpdate = todos.find((todo: Todo) => todo.id === Number(id));
     if (todoToUpdate) {
       // Update logic here
       res.status(200).json({ message: 'Todo updated', todo: todoToUpdate });
@@ -13,7 +21,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       res.status(404).json({ message: 'Todo not found' });
     }
   } else if (req.method === 'DELETE') {
-    const todoIndex = todos.findIndex(todo => todo.id === Number(id));
+    const todoIndex = todos.findIndex((todo: Todo) => todo.id === Number(id));
     if (todoIndex !== -1) {
       // Remove logic here
       todos.splice(todoIndex, 1);

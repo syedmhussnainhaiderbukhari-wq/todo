@@ -1,8 +1,14 @@
 import fs from 'fs';
 
+interface Todo {
+  id: number;
+  title: string;
+  completed: boolean;
+}
+
 const FILE_PATH = 'todos.json';
 
-export const saveTodos = (todos) => {
+export const saveTodos = (todos: Todo[]) => {
     fs.writeFileSync(FILE_PATH, JSON.stringify(todos, null, 2));
 };
 
